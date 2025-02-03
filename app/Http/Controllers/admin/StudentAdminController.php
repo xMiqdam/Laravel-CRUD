@@ -17,7 +17,7 @@ class StudentAdminController extends Controller
 
      public function index()
      {
-         $students = Student::with('grade')->latest()->get();
+        $students = Student::with('grade')->latest()->paginate(10);
          return view('admin.student.student-admin', compact('students'), [
              'title' => "Students",
              'students' => $students
